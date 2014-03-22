@@ -1,0 +1,8 @@
+<%= form_for(@subcategory) do |f| %>
+
+  <%= f.label :Subcategory %>
+  <%= f.select(:id, [['Football', 3], ['Baseball', 4], ['Hockey', 5]]) %>
+  <%= f.submit :"Add Subcategory" %>
+
+<% end %>
+

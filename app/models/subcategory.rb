@@ -1,6 +1,6 @@
 class Subcategory < ActiveRecord::Base
-  has_many :subcategory_blogs
+  has_many :blog_subcategories
   has_many :blogs,
-  through: :subcategory_blogs
+  through: :blog_subcategories
   belongs_to :category
 end

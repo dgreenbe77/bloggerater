@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320175617) do
+ActiveRecord::Schema.define(version: 20140322195046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blog_ratings", force: true do |t|
+    t.integer  "blog_id",    null: false
+    t.integer  "rating_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blog_subcategories", force: true do |t|
+    t.integer  "blog_id",        null: false
+    t.integer  "subcategory_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blogs", force: true do |t|
     t.string   "title",       null: false
@@ -23,15 +37,9 @@ ActiveRecord::Schema.define(version: 20140320175617) do
     t.integer  "user_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ratings",     null: false
+    t.string   "category",    null: false
   end
-
-  create_table "blogs_subcategories", id: false, force: true do |t|
-    t.integer "subcategory_id", null: false
-    t.integer "blog_id",        null: false
-  end
-
-  add_index "blogs_subcategories", ["blog_id", "subcategory_id"], name: "index_blogs_subcategories_on_blog_id_and_subcategory_id", using: :btree
-  add_index "blogs_subcategories", ["subcategory_id", "blog_id"], name: "index_blogs_subcategories_on_subcategory_id_and_blog_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "genre",      null: false
@@ -42,7 +50,6 @@ ActiveRecord::Schema.define(version: 20140320175617) do
   create_table "ratings", force: true do |t|
     t.integer  "rating",     null: false
     t.integer  "rater_id",   null: false
-    t.integer  "blog_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,10 +63,10 @@ ActiveRecord::Schema.define(version: 20140320175617) do
   end
 
   create_table "subcategories", force: true do |t|
-    t.string   "type",        null: false
     t.integer  "category_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subcategory"
   end
 
   create_table "users", force: true do |t|

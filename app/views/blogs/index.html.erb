@@ -1,0 +1,24 @@
+<h1>Bloggerater: Rate and Find Blogs</h1>
+
+<div class = "large-3 medium-3 columns">
+  <%= link_to 'Enter a Blog Site', new_blog_path, class: "small round button"%>
+  <% @blogs.each do |blog| %>
+  <p>
+    <h3><%= link_to blog.title, blog %></h3><br>
+    <a href="https://<%= blog.url %>"> <%= blog.url %> </a><br>
+    <%= "Description: " + blog.description %> <br>
+    <%= link_to 'Show', blog %> |
+    <%= link_to 'Edit', edit_blog_path(blog) %> |
+    <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<%end%>
+</div>
+
+<div class = "large-9 medium-9 columns">
+   <a href="/blogs?filter=10" class="small round button" align: 'right'>Top 3</a>
+</div>
+
+  <div class="circle"></div>
+   <span class="about"><a href="#">Contact</a></span>
+
+

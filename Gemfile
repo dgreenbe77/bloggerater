@@ -10,6 +10,7 @@ gem 'devise'
 
 gem 'hirb'
 
+gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -39,6 +40,7 @@ end
 group :development do
   gem 'pry'
   gem 'rspec-rails'
+  gem 'quiet_assets'
 end
 
 # Use ActiveModel has_secure_password

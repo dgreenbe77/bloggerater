@@ -1,0 +1,17 @@
+<%= form_for(@blog) do |f| %>
+
+  <%= f.label :Title %>
+  <%= f.text_field :title %>
+  <%= f.label :URL %>
+  <%= f.text_field :url %>
+  <%= f.label :Description %>
+  <%= f.text_field :description %>
+  <%= f.label :Category %>
+  <%= f.text_field :category %>
+  <%= f.label :rating %>
+  <%= f.select(:ratings, [['5', 5], ['4', 4], ['3',3], ['2', 2], ['1',1]]) %>
+
+  <%= f.submit :"Create Blog" %>
+
+<% end %>
+
