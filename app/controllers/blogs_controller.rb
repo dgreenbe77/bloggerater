@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+skip_before_filter :authenticate_user!
 
   def index
     if params["filter"].present?
